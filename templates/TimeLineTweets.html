@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>TimeLine Tweets</title>
+</head>
+<body>
+    <h1>Tweets da TimeLine</h1><br>
+    {% for x in timeline.values() %}
+        <p>{{ x }}</p>
+    {% endfor %}
+    <br>
+    <form action="/">
+        <button type="submit" class="btn btn-default">Volta para Index</button>
+    </form>
+</body>
+</html>
