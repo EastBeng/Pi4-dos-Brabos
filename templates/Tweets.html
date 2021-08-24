@@ -7,13 +7,13 @@
 <body>
     <div class="container">
         <div class="filtros">
-            <button>Meus Tweets</button>
-            <button>Timeline</button>
+            <button id="btMeusTweets">Meus Tweets</button>
+            <button id="btTimeline">Timeline</button>
         </div>
 
         <div class="tweets">
             {% for tweet in tweets.values() %}
-                <p class="tweet {% if tweet.user.screen_name == "PichamonUcl" %}meuTweet{% endif %}">
+                <p class="{% if tweet.user.screen_name == "PichamonUcl" %}meuTweet{% else %}tweet{% endif %}">
                     {{ tweet.user.profile_image_url }}<br>
                     {{ tweet.created_at }}<br>
                     {{ tweet.user.screen_name }}<br>
@@ -23,5 +23,43 @@
             {% endfor %}
         </div>
     </div>
+
+    <script>
+        const btMeusTweets = document.getElementById("btMeusTweets");
+        const meusTweets = document.getElementsByClassName("meuTweet");
+        var btMeusTweetsEstaAtivo = false;
+
+        btMeusTweets.onclick = function(){
+            btMeusTweets.classList.toggle("ativo");
+            btMeusTweetsEstaAtivo = !btMeusTweetsEstaAtivo;
+            if (btMeusTweetsEstaAtivo) {
+                for (var i=0; i<meusTweets.length; i++) {
+                    meusTweets.item(i).style.display = "none";
+                }
+            } else {
+                for (var i=0; i<meusTweets.length; i++) {
+                    meusTweets.item(i).style.display = "block";
+                }
+            }
+        };
+
+        const btTweetsTimeline = document.getElementById("btTimeline");
+        const tweetsTimeline = document.getElementsByClassName("tweet");
+        var btTweetsTimelineEstaAtivo = false;
+
+        btTweetsTimeline.onclick = function(){
+            btTweetsTimeline.classList.toggle("ativo");
+            btTweetsTimelineEstaAtivo = !btTweetsTimelineEstaAtivo;
+            if (btTweetsTimelineEstaAtivo) {
+                for (var i=0; i<tweetsTimeline.length; i++) {
+                    tweetsTimeline.item(i).style.display = "none";
+                }
+            } else {
+                for (var i=0; i<tweetsTimeline.length; i++) {
+                    tweetsTimeline.item(i).style.display = "block";
+                }
+            }
+        };
+    </script>
 </body>
 </html>
