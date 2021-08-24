@@ -1,4 +1,6 @@
-from flask import Flask, render_template
+import json
+
+from flask import Flask, render_template, request
 import tweepy as tw
 
 app = Flask(__name__)
@@ -10,6 +12,9 @@ def Pagina():  # put application's code here
 
 @app.route('/testando')
 def teste():
+
+    #buscar = request.arg.get("buscar")
+
     consumer_key = "QO61pvhO0VdFaZBIGJLbhRBfG"
     consumer_secret = "vuN4ATiwzf3BenkzkeG3kXr6ISGZ17makoOgEuoyt7Rs3JHGel"
     access_token = "1427399398481399819-hAhAKowuXS7fNFYrSMUpBYiv6Qmm5P"
@@ -30,8 +35,8 @@ def teste():
         dicionario[i] = tweet.text
         i+=1
 
-    return dicionario
-    #return tweet._json
+    return json.dumps(dicionario)
+    #return str(tweet._json)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True, port=80)
