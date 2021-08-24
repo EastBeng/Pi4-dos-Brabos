@@ -63,8 +63,10 @@ def timeline_tweets():
         dicionario[i] = tweet.text
         i += 1
 
-    return json.dumps(dicionario)
+    #return json.dumps(dicionario)
+    aux = dicionario
 
+    return render_template("TimeLineTweets.html", timeline=aux, i=0)
 
 if __name__ == '__main__':
     app.run(debug=True, port=80)
