@@ -30,6 +30,7 @@ def user_tweets():
     public_tweets = api.user_timeline()
 
     i = 0
+
     dicionario = {}
 
     for tweet in public_tweets:
