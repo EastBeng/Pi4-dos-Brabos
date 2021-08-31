@@ -37,7 +37,7 @@ def tweets():
 @app.route('/user_tweets')
 def user_tweets():
 
-    #buscar = request.arg.get("buscar")
+    buscar_user = request.args.get("pesquisa")
 
     consumer_key = "QO61pvhO0VdFaZBIGJLbhRBfG"
     consumer_secret = "vuN4ATiwzf3BenkzkeG3kXr6ISGZ17makoOgEuoyt7Rs3JHGel"
@@ -65,10 +65,12 @@ def user_tweets():
 
     aux = dicionario
 
-    return render_template("UserTweets.html", timeline=aux)
+    return render_template("UserTweets.html", timeline=aux, busca=buscar_user)
 
 @app.route('/timeline_tweets')
 def timeline_tweets():
+
+    buscar_timeline = request.args.get("pesquisa")
 
     consumer_key = "QO61pvhO0VdFaZBIGJLbhRBfG"
     consumer_secret = "vuN4ATiwzf3BenkzkeG3kXr6ISGZ17makoOgEuoyt7Rs3JHGel"
@@ -93,7 +95,7 @@ def timeline_tweets():
     #return json.dumps(dicionario)
     aux = dicionario
 
-    return render_template("TimeLineTweets.html", timeline=aux)
+    return render_template("TimeLineTweets.html", timeline=aux, busca=buscar_timeline)
 
 if __name__ == '__main__':
     app.run(debug=True, port=80)

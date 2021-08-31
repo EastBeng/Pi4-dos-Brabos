@@ -7,7 +7,9 @@
 <body>
     <h1>Tweets da TimeLine</h1><br>
     {% for x in timeline.values() %}
-        <p>{{ x }}</p>
+        {% if busca in x %}
+            <p>{{ x }}</p>
+        {% endif %}
     {% endfor %}
     <br>
     <form action="/">
