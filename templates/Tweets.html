@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Tweets</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <div class="container">
@@ -12,15 +14,30 @@
         </div>
 
         <div class="tweets">
+
             {% for tweet in tweets.values() %}
-                <p class="{% if tweet.user.screen_name == "PichamonUcl" %}meuTweet{% else %}tweet{% endif %}">
-                    {{ tweet.user.profile_image_url }}<br>
-                    {{ tweet.created_at }}<br>
-                    {{ tweet.user.screen_name }}<br>
-                    {{ tweet.user.name }}<br>
-                    {{ tweet.text }}<br>
-                </p><br>
+                <div class="{% if tweet.user.screen_name == "PichamonUcl" %}meuTweet{% else %}tweet{% endif %}">
+                    <div class="cabecalho">
+                        <div class="img">
+                            <img alt="{{ tweet.user.screen_name }}" src="{{ tweet.user.profile_image_url }}">
+                        </div>
+                        <div class="nome">
+                            <a href="https://twitter.com/{{ tweet.user.screen_name }}" target="_blank">
+                                <span class="nomeExibicao">{{ tweet.user.name }}</span>
+                                <span class="nomeArroba">@{{ tweet.user.screen_name }}</span>
+                            </a>
+                            <br>
+                            <span class="dataTweet">{{ tweet.created_at }}</span>
+                        </div>
+                    </div>
+                    <div class="corpo">
+                        <div class="texto">
+                            <p>{{ tweet.text }}</p>
+                        </div>
+                    </div>
+                </div>
             {% endfor %}
+
         </div>
     </div>
 
