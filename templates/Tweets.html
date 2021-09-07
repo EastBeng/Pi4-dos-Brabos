@@ -18,6 +18,7 @@
             <div class="dvBtsFiltros">
                 <button class="btFiltros" id="btMeusTweets">MEUS TWEETS</button>
                 <button class="btFiltros" id="btTimeline">TIMELINE</button>
+                <button class="btFiltros ativo" id="btTodosTweets">TODOS</button>
             </div>
         </div>
 
@@ -64,9 +65,7 @@
 
                 const tweets = document.getElementsByClassName("dvTweet");
                 for (var z=0; z<tweets.length; z++) {
-                    if (tweets[z].classList.contains('meuTweet') && tipoTweet=="btMeusTweets") {
-                        tweets[z].style.display = "block";
-                    } else if (tweets[z].classList.contains('tweet') && tipoTweet=="btTimeline") {
+                    if ((tweets[z].classList.contains('meuTweet') && tipoTweet=="btMeusTweets") || (tweets[z].classList.contains('tweet') && tipoTweet=="btTimeline") || (tipoTweet=="btTodosTweets")) {
                         tweets[z].style.display = "block";
                     } else {
                         tweets[z].style.display = "none";
