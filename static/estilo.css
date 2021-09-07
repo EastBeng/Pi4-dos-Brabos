@@ -35,15 +35,17 @@ body {
   margin: 0 auto;
 }
 
+.filtros {
+  margin: var(--margin) 0;
+}
 .filtros,
 .filtros > .dvBtsFiltros {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: var(--margin);
-  margin: var(--margin) 0;
 }
 .filtros > .dvBtsFiltros {
   flex-direction: row;
