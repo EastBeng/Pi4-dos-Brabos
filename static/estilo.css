@@ -15,7 +15,7 @@
 
 * {
   font-family: var(--fonteTexto);
-  color: var(--corFonteBg);
+  /*color: var(--corFonteBg);*/
   font-size: var(--tamFonte);
   transition: .2s;
   text-decoration: none;
@@ -35,28 +35,46 @@ body {
   margin: 0 auto;
 }
 
-.filtros{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-  gap: var(--margin);
+.filtros {
   margin: var(--margin) 0;
 }
-.filtros button {
+.filtros,
+.filtros > .dvBtsFiltros {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--margin);
+}
+.filtros > .dvBtsFiltros {
+  flex-direction: row;
+  gap: 5px;
+}
+.filtros button,
+.filtros input {
   color: var(--corFonte);
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   letter-spacing: 1px;
   font-weight: bold;
   border: none;
   padding: 15px 25px;
-  width: 300px;
-  background-image: linear-gradient(45deg, #07ffc6, #bcbf00);
   border-radius: var(--radius);
   cursor: pointer;
 }
+.filtros > .dvBtsFiltros button {
+  /*width: 300px;*/
+  background-image: linear-gradient(45deg, #07ffc6, #bcbf00);
+}
+.filtros > .dvBtsFiltros button:not(.ativo) {
+    opacity: .5;
+}
 .filtros button:hover {
   background-image: linear-gradient(90deg, #bcbf00, #07ffc6);
+}
+.filtros input {
+    background-image: linear-gradient(45deg, #f1f1f1, #cacaca);
+    cursor: auto;
 }
 
 .filtros button:hover,
