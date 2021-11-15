@@ -11,13 +11,14 @@
   --tamFonte  : 1rem;
   --tamFonteMenor: .8rem;
   --margin    : 30px;
+  --transition: var(--transition);
 }
 
 * {
   font-family: var(--fonteTexto);
   /*color: var(--corFonteBg);*/
   font-size: var(--tamFonte);
-  transition: .2s;
+  transition: var(--transition);
   text-decoration: none;
   margin: 0;
   padding: 0;
@@ -53,6 +54,7 @@ body {
 }
 .filtros button,
 .filtros input {
+  position: relative;
   color: var(--corFonte);
   /*text-transform: uppercase;*/
   letter-spacing: 1px;
@@ -80,6 +82,21 @@ body {
 .filtros button:hover,
 .tweets > div:hover {
   box-shadow: 0 10px 10px -5px var(--corFonte);
+}
+
+.filtros button:hover::after {
+    content: attr(custom-title);
+    width: max-content;
+    position: absolute;
+    bottom: -100%;
+    right: 0;
+    background-color: var(--corFonte);
+    color: var(--corFonteBg);
+    font-weight: normal;
+    text-align: left;
+    padding: 10px;
+    border-radius: var(--radius);
+    transition: var(--transition);
 }
 
 .tweets {

@@ -5,6 +5,8 @@
     <title>Tweets</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
 </head>
 <body>
     <div class="container">
@@ -16,9 +18,18 @@
                 </form>
             </div>
             <div class="dvBtsFiltros">
-                <button class="btFiltros" id="btMeusTweets">MEUS TWEETS</button>
-                <button class="btFiltros" id="btTimeline">TIMELINE</button>
-                <button class="btFiltros ativo" id="btTodosTweets">TODOS</button>
+                <button class="btFiltros" id="btMeusTweets" custom-title="Visualizar somente os meus Tweets">
+                    VER MEUS TWEETS
+                </button>
+                <button class="btFiltros" id="btTimeline" custom-title="Visualizar somente Timeline">
+                    VER TIMELINE
+                </button>
+                <button class="btFiltros ativo" id="btTodosTweets" custom-title="Visualizar todos os Tweets">
+                    VER TODOS
+                </button>
+                <button class="btFiltros ativo" id="btTodosTweets" custom-title="Buscar por novos Tweets">
+                    <i class="fa fa-refresh" aria-hidden="true"></i>
+                </button>
             </div>
         </div>
 
@@ -56,8 +67,8 @@
     <script>
         const btFiltros = document.getElementsByClassName("btFiltros");
         for (var i=0; i<btFiltros.length; i++) {
-            btFiltros[i].onclick = function () {
 
+            btFiltros[i].onclick = function () {
                 for (var y=0; y<btFiltros.length; y++) {
                     btFiltros[y].classList.remove("ativo");
                 }
