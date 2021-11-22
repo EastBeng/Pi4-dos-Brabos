@@ -3,7 +3,7 @@ from sentilex import Score_sentimento
 import tweepy as tw
 
 
-def novos_tweets():
+def novos_tweets(palavra_busca):
     consumer_key = "QO61pvhO0VdFaZBIGJLbhRBfG"
     consumer_secret = "vuN4ATiwzf3BenkzkeG3kXr6ISGZ17makoOgEuoyt7Rs3JHGel"
     access_token = "1427399398481399819-hAhAKowuXS7fNFYrSMUpBYiv6Qmm5P"
@@ -22,6 +22,12 @@ def novos_tweets():
     for tweet in public_tweets:
         tweets[i] = tweet._json
         tweets[i]["polaridade"] = Score_sentimento(tweets[i]["text"])
+
+        if(palavra_busca in str(tweets[i]["text"]) and palavra_busca != ""):
+            armpol += int(tweets[i]["polaridade"].split(":")[1])
+        elif(palavra_busca == ""):
+            armpol += int(tweets[i]["polaridade"].split(":")[1])
+        
         i += 1
 
     grava_arquivo(dados=tweets)
